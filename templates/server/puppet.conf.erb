@@ -47,7 +47,12 @@
 <% end -%>
 
   # Reporting
+<% if scope.lookupvar('puppet::db') == "puppetdb" -%>
+  report = true
+  reports = puppetdb
+<% else -%>
   reports = <%= scope.lookupvar('puppet::reports_value') %>
+<% end  -%>
 <% if scope.lookupvar('puppet::reporturl') != '' -%>
   reporturl = <%= scope.lookupvar('puppet::reporturl') %>
 <% end -%>
