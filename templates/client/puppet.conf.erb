@@ -38,3 +38,4 @@
   listen = <%= scope.lookupvar('puppet::bool_listen') %>
   runinterval = <%= scope.lookupvar('puppet::runinterval') %>
   localconfig = $vardir/localconfig
+  ordering = <%= @ordering %>

@@ -143,6 +143,8 @@
 #
 # [*reporturl*]
 #
+# [*ordering*]
+#
 # Extra Database settings
 #
 # [*mysql_conn_package*]
@@ -475,9 +477,11 @@ class puppet (
   $protocol            = params_lookup( 'protocol' ),
   $manifest_path       = params_lookup( 'manifest_path' ),
   $module_path         = params_lookup( 'module_path' ),
+  $ordering            = 'title-hash',
   $template_dir        = params_lookup( 'template_dir' )
   ) inherits puppet::params {
 
+  validate_re($ordering, ['title-hash', 'manifest', 'ordering'], 'Valid values are: title-hash, manifest and ordering.')
   $bool_enc_backup=any2bool($enc_backup)
   $bool_listen=any2bool($listen)
   $bool_externalnodes=any2bool($externalnodes)
